@@ -1,38 +1,17 @@
 const express = require("express");
+const { createUserRoutes } = require("./routes/user");
+const { createCourseRoutes } = require("./routes/course");
+
 
 const app = express();
 
 
-app.post("/user/singup", (req, res) =>{
-    res.json({
-        message: "signup enndpoint"
-    })
-})
-
-app.post("/user/singin", (req, res) =>{
-    res.json({
-        message: "signup enndpoint"
-    })
-})
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/course", courseRouter);
 
 
-app.get("/user/purchases", (req, res) =>{
-    res.json({
-        message: "signup enndpoint"
-    })
-})
-
-app.post("/course/purchase", (req, res) =>{
-    res.json({
-        message: "signup enndpoint"
-    })
-})
-
-app.get("/course", (req, res) =>{
-    res.json({
-        message: "signup enndpoint"
-    })
-})
+createUserRoutes(app);
+createCourseRoutes(app);
 
 
-app.listen()
+app.listen(3000);
